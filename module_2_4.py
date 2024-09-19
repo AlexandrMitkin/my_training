@@ -11,14 +11,13 @@ for i in numbers:
     if i % 2 == 0:
         not_primes.append(i)
         continue
-    for j in range(2, i // 2 + 2):
+    is_prime = True
+    for j in range(3, i//2, 2):
         if i % j == 0:
             not_primes.append(i)
-            print(primes)
-            print(not_primes)
-            print()
+            is_prime = False
             break
-        if j == i // 2 + 1:
-            primes.append(i)
+    if is_prime == True:
+        primes.append(i)
 print(primes)
 print(not_primes)
