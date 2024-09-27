@@ -6,41 +6,30 @@ class ChildH(House):
         self.name = name1
         self.number_of_floors = number_of_floors1
 
-    # def __eq__(self, other):
-    #    if isinstance(other, int):
-    #       return self.number_of_floors == other
-    #  elif isinstance(other, House):
-    #     return self.number_of_floors == other.number_of_floors
-
     def __lt__(self, other):
-        return self.number_of_floors < other.number_of_floors
+        # return self.number_of_floors < other.number_of_floors
+        if isinstance(other, House):
+            return self.number_of_floors < other.number_of_floors
+        elif isinstance(other, int):
+            return self.number_of_floors < other
 
     def __le__(self, other):
-        return self.number_of_floors <= other.number_of_floors
+        return House.__eq__(self, other) or self.__lt__(other)
 
     def __gt__(self, other):
-        return self.number_of_floors > other.number_of_floors
+        return not self.__le__(other)
 
     def __ge__(self, other):
-        return self.number_of_floors >= other.number_of_floors
+        return not self.__lt__(other)
 
     def __ne__(self, other):
-        return self.number_of_floors != other.number_of_floors
-
-    # def __add__(self, value):
-    # sc = value if isinstance(value, int) else value.number_of_floors
-    # self.number_of_floors = self.number_of_floors + sc
-    # print(type(self.number_of_floors)) #self.number_of_floors
-    # return self
+        return not House.__eq__(self, other)
 
     def __radd__(self, value):
-        self.number_of_floors = self.number_of_floors + value
-
-        return self
+        return House.__add__(self, value)
 
     def __iadd__(self, value):
-        self.number_of_floors += value
-        return self
+        return House.__add__(self, value)
 
 
 h1 = ChildH('ЖК Эльбрус', 10)
@@ -69,6 +58,12 @@ print(h1)
 
 h2 = 10 + h2  # __radd__
 print(h2)
+
+print(h1 > h2)  # __gt__
+print(h1 >= h2)  # __ge__
+print(h1 < h2)  # __lt__
+print(h1 <= h2)  # __le__
+print(h1 != h2)  # __ne__
 
 print(h1 > h2)  # __gt__
 print(h1 >= h2)  # __ge__
