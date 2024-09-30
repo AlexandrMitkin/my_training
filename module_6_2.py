@@ -6,6 +6,9 @@ class Vehicle:
         self.__model = "model_a1"
         self.__engine_power = "power_b1"
         self.__color = "blue"
+        self._model = self.__model
+        self._engine_power = self.__engine_power
+        self._color = self.__color
 
     def get_model(self):
         return f"Модель: {self._model}"
