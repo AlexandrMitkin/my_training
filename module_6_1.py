@@ -21,15 +21,8 @@ class Mammal(Animal):
         self.alive = Animal.alive
 
     def eat(self, food1):
-        if isinstance(food1, Fruit):
-            if Fruit.edible_M == True:
-                print(f"{self.name} съел {food1.name}")
-                self.fed = True
-            else:
-                print(f"{self.name} не стал есть {food1.name}")
-                self.alive = False
-        elif isinstance(food1, Flower):
-            if Flower.edible_M == True:
+        if isinstance(food1, Plant):
+            if food1.edible_M == True:
                 print(f"{self.name} съел {food1.name}")
                 self.fed = True
             else:
@@ -44,15 +37,8 @@ class Predator(Animal):
         self.alive = Animal.alive
 
     def eat(self, food1):
-        if isinstance(food1, Fruit):
-            if Fruit.edible_P == True:
-                print(f"{self.name} съел {food1.name}")
-                self.fed = True
-            else:
-                print(f"{self.name} не стал есть {food1.name}")
-                self.alive = False
-        elif isinstance(food1, Flower):
-            if Flower.edible_P == True:
+        if isinstance(food1, Plant):
+            if food1.edible_P == True:
                 print(f"{self.name} съел {food1.name}")
                 self.fed = True
             else:
@@ -84,8 +70,8 @@ class Fruit(Plant):
 
 a1 = Predator('Волк с Уолл-Стрит')
 a2 = Mammal('Хатико')
-p1 = Flower('Цветик семицветик')
-p2 = Fruit('Заводной апельсин')
+p1 = Flower('Цветик семицветик', False, False)
+p2 = Fruit('Заводной апельсин', True, False)
 
 print(a1.name)
 print(p1.name)
@@ -96,3 +82,6 @@ a1.eat(p1)
 a2.eat(p2)
 print(a1.alive)
 print(a2.fed)
+
+p3 = Fruit('Заводной апельсин2', False, False)
+a2.eat(p3)
