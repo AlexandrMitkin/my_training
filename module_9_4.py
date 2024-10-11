@@ -1,5 +1,3 @@
-from random import choice
-
 import random2
 
 first = 'Мама мыла раму'
