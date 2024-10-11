@@ -1,4 +1,4 @@
-import random2
+from random import choice
 
 first = 'Мама мыла раму'
 second = 'Рамена мало было'
@@ -29,7 +29,7 @@ class MysticBall:
         self.words = words1
 
     def __call__(self):
-        return random2.choice(self.words)
+        return choice(self.words)
 
 
 first_ball = MysticBall('Да', 'Нет', 'Наверное')
