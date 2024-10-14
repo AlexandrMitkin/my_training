@@ -51,8 +51,7 @@ class Cafe(Guest):
             if i.guest != None:
                 r = 1
                 break
-
-        if Guest.q.empty() == False or r == 1:
+        while Guest.q.empty() == False or r == 1:
             for i in self.tables:
                 if i.guest != None:
                     k = 0
@@ -69,6 +68,7 @@ class Cafe(Guest):
                         i.guest = None
                         if Guest.q.empty() == False:
                             g2 = Guest.q.get()
+                            i.guest = g2
                             print(f"{g2} вышел(-ла) из очереди и сел(-а) за стол номер {i.number}")
                             k = 0
                             for j in guests:
@@ -78,6 +78,11 @@ class Cafe(Guest):
                             # k - номер гостя, который сел за стол
                             guests[k].start()
                             guests[k].join()
+            r = 0
+            for i in self.tables:
+                if i.guest != None:
+                    r = 1
+                    break
 
 
 # Создание столов
