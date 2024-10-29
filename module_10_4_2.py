@@ -6,14 +6,14 @@ import threading
 
 
 class Table:
-    def __init__(self, number1, guest1=None):
-        self.number = number1
-        self.guest = guest1
+    def __init__(self, table_number, table_guest=None):
+        self.number = table_number
+        self.guest = table_guest
 
 class Guest(threading.Thread):
-    def __init__(self, name1):
+    def __init__(self, guest_name):
         threading.Thread.__init__(self)
-        self.name = name1
+        self.name = guest_name
 
     def run(self):
         #print(f"гость {self.name} спит ")
