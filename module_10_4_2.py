@@ -49,10 +49,9 @@ class Cafe:
         r = 0
         for i in self.tables:
             if i.table_guest != None:
-                r = 1
-                break
+                r += 1
         # если очередь не пуста или есть занятые столы, то обслуживаем
-        while self.queue.empty() == False or r == 1:
+        while self.queue.empty() == False or r > 0:
             r1 = 0
             k1 = 0
             # ищем стол, где гость покушал
@@ -69,21 +68,23 @@ class Cafe:
                                 if j.is_alive() == False:
                                     print(f"{i.table_guest} покушал(-а) и ушёл(ушла)")
                                     print(f"Стол номер {i.table_number} свободен")
-                                    i.guest = None
+                                    i.table_guest = None
                                     # запоминаем номер стола и запоминаем, что освободили
                                     k1 = i.table_number - 1
                                     r1 = 1
-                                    r = 0
+                                    r -= 1
+                                # гостя проверили
                                 break
+                        # если гость покушал, то поверку столов прекращаем
+                        if r1 == 1:
+                            break
             # стол освободился. Если очередь не пуста, то сажаем за стол следующего
             if self.queue.empty() == False:
                 g2 = self.queue.get()
-                # print("k1= ", k1)
-                # print("g2.name= ", g2.name)
                 tables[k1].table_guest = g2.guest_name
-                print(f"{g2.name} вышел(-ла) из очереди и сел(-а) за стол номер {k1 + 1}")
+                print(f"{g2.guest_name} вышел(-ла) из очереди и сел(-а) за стол номер {k1 + 1}")
                 # запоминаем, что не все столы пусты
-                r = 1
+                r += 1
                 g2.start()
 
 
