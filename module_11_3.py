@@ -2,6 +2,11 @@ import sys
 import inspect
 
 
+class figa:
+    def fanc2(self):
+        pass
+
+
 def func1():
     pass
 
@@ -38,6 +43,7 @@ def introspection_info(obj):
     return info_dir
 
 
+fig1 = figa()
 # number_info = introspection_info(func1)
-number_info = introspection_info(func1)
+number_info = introspection_info(fig1)
 print(number_info)
