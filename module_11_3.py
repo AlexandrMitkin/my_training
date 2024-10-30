@@ -3,7 +3,7 @@ import inspect
 
 
 class figa:
-    def fanc2(self):
+    def func2(self):
         pass
 
 
