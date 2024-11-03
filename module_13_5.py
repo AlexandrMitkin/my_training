@@ -44,16 +44,19 @@ async def send_calories(message, state):
     await message.answer(f"Наш ответ по калориям {calorii}")
     await state.finish()
 
-#keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
+
+# keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
 
 kb = ReplyKeyboardMarkup(resize_keyboard=True)
 button1 = KeyboardButton(text="Рассчитать")
 button2 = KeyboardButton(text="Информация")
 kb.add(button1)
 kb.add(button2)
+
+
 @dp.message_handler(commands=['start'])
 async def start(message):
-    await message.answer("Привет", reply_markup = kb)
+    await message.answer("Привет", reply_markup=kb)
 
 
 if __name__ == "__main__":
